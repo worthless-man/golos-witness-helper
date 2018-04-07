@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+            <title>Golos witness helper</title>
+    </head>
+    <body>
+        <script src="https://unpkg.com/golos-js@0.6.3/dist/golos.min.js"></script>
+        <h1>Аккаунт</h1>
+        <form>
+            <p>Логин: <input type="text" name="login" id="login"></p>
+            <p>Ключ: <input type="text" name="key" id="key"></p>
+        </form>
+        <h2>feed_publish</h2>
+            <p>1.000 Golos стоит</p>
+            <p><input type="text" name="base" id="base" value="0.000"> GBG</p>
+            <a class="feed"><button>Отправить в сеть</button></a>
+        <script>
+            golos.config.set('websocket','wss://ws17.golos.io');
+            
+            var BUTT = document.querySelector("a.feed");
+            BUTT.addEventListener("click", feedPublisher);
+            
+            function feedPublisher()
+            {
+                let BASE = document.getElementById("base").value;
+                BASE = BASE.substring(0,5).replace(',', '.') + ' GBG';
+                golos.broadcast.feedPublish(document.getElementById("key").value,
+                                            document.getElementById("login").value,
+                                            {base: BASE, quote: "1.000 GOLOS"},
+                                            function(err, result){console.log(err, result);});
+            }
+        </script>
+    </body>
+</html>
