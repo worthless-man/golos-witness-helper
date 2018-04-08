@@ -27,7 +27,7 @@
                 BASE = BASE.substring(0,5).replace(',', '.') + ' GBG';
                 golos.broadcast.feedPublish(document.getElementById("key").value,
                                             document.getElementById("login").value,
-                                            {base: BASE, quote: "1.000 GOLOS"},
+                                            {base: BASE + ' GBG', quote: '1.000 GOLOS'},
                                             function(err, result){console.log(err, result);});
             }
         </script>
