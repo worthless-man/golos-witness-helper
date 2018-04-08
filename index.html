@@ -24,7 +24,7 @@
             function feedPublisher()
             {
                 let BASE = document.getElementById("base").value;
-                BASE = BASE.substring(0,5).replace(',', '.') + ' GBG';
+                BASE = BASE.substring(0,5).replace(',', '.');
                 golos.broadcast.feedPublish(document.getElementById("key").value,
                                             document.getElementById("login").value,
                                             {base: BASE + ' GBG', quote: '1.000 GOLOS'},
